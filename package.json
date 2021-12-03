@@ -1,0 +1,26 @@
+{
+  "name": "token-prices-example",
+  "version": "1.0.0",
+  "description": "Uniswap price challenge",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "example": "node ./example/examplePriceGet.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spaceforce-dev/token-prices-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spaceforce-dev/token-prices-example/issues"
+  },
+  "homepage": "https://github.com/spaceforce-dev/token-prices-example#readme",
+  "dependencies": {
+    "web3": "^1.6.1",
+    "web3-eth-contract": "^1.6.1"
+  }
+}
