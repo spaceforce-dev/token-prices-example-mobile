@@ -1,7 +1,7 @@
 const web3 = require("web3");
 const Contract = require("web3-eth-contract");
 
-// This is an example of how we can get the true onchain price of an asset like we will in SOMA.
+// This is an example of how we can get the true onchain price of Ethereum or other ERC20 tokens on Ethereum.
 
 // How uniswap works
 // https://docs.uniswap.org/protocol/V2/concepts/protocol-overview/how-uniswap-works
