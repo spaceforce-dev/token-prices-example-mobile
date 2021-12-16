@@ -9,6 +9,10 @@ http://web3j.io/
 
 Setup and run example script:
 
+install nodejs and npm
+
+cd into repo
+
 npm i
 
 npm run example
