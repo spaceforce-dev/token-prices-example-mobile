@@ -1,4 +1,3 @@
-const web3 = require("web3");
 const Contract = require("web3-eth-contract");
 
 // This is an example of how we can get the true onchain price of Ethereum or other ERC20 tokens on Ethereum.
@@ -7,7 +6,7 @@ const Contract = require("web3-eth-contract");
 // https://docs.uniswap.org/protocol/V2/concepts/protocol-overview/how-uniswap-works
 
 // Function definitions for the Smart contract we are communicating with.
-const { abi } = require("../abi/LiquidityPoolPair.js");
+const { abi } = require("./abi/LiquidityPoolPair.js");
 
 // Setup connection to ethereum blockchain node
 Contract.setProvider(
@@ -26,37 +25,21 @@ let LiquidityPoolContract = new Contract(
 // Here is the guts of the price getting operation
 // We are getting price of ethereum from the uniswap smart contract without a price feed like coingecko.com
 (async () => {
-  console.log("First we get the Uniswap Liquidity pool reserves");
-
+  // First we get the Uniswap Liquidity pool reserves
   const poolReserves = await LiquidityPoolContract.methods.getReserves().call();
 
-  console.log("        ");
-
-  console.log(
-    "We then divide the reserves by 10 ** decimals of the underlying tokens usdc and Ethereum"
-  );
-
+  // We then divide the reserves by 10 ** decimals of the underlying tokens usdc and Ethereum
   const UsdcDecimals = 6;
   const EthereumDecimals = 18;
 
   const UsdcReserves = poolReserves[0] / 10 ** UsdcDecimals;
   const EthereumReserves = poolReserves[1] / 10 ** EthereumDecimals;
 
-  console.log(UsdcReserves);
-  console.log(EthereumReserves);
-
-  console.log("        ");
-
-  console.log(
-    "Assuming one USDC is worth 1 USD, we can then derive the price of ethereum from the pool reserves"
-  );
-
-  console.log("        ");
-
-  console.log("The live Ethereum price in the USDC/ETH Uniswap LP pool is");
-
+  // Assuming one USDC is worth 1 USD, we can then derive the price of ethereum from the pool reserves
+  // The live Ethereum price in the USDC/ETH Uniswap LP pool is
   const ethereumLivePrice = UsdcReserves / EthereumReserves;
-  console.log(ethereumLivePrice);
+
+  console.log({ ethereumLivePrice });
 
   return ethereumLivePrice;
 })();
